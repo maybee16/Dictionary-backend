@@ -1,0 +1,11 @@
+﻿{
+  "profiles": {
+    "DictionaryService": {
+      "commandName": "Project",
+      "applicationUrl": "https://localhost:9001;http://localhost:9002",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
