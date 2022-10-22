@@ -8,28 +8,29 @@ using System.Threading.Tasks;
 
 namespace DictionaryService.Models.Db;
 
-public class DbWordsDescriptions
+public class DbWordsDescription
 {
   public const string TableName = "WordsDescription";
 
   public Guid Id { get; set; }
+  public Guid WordId { get; set; }
   public string Name { get; set; }
   public string Content { get; set; }
 
   public DbWord Word { get; set; }
 
-  public DbWordsDescriptions()
+  public DbWordsDescription()
   {
     Word = new DbWord();
   }
 }
 
-public class WordsDescriptionsConfiguration : IEntityTypeConfiguration<DbWordsDescriptions>
+public class WordsDescriptionsConfiguration : IEntityTypeConfiguration<DbWordsDescription>
 {
-  public void Configure(EntityTypeBuilder<DbWordsDescriptions> builder)
+  public void Configure(EntityTypeBuilder<DbWordsDescription> builder)
   {
     builder
-      .ToTable(DbWordsDescriptions.TableName);
+      .ToTable(DbWordsDescription.TableName);
 
     builder.HasKey(wd => wd.Id);
 

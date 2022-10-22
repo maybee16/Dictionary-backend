@@ -8,16 +8,17 @@ public class DbWord
   public const string TableName = "Word";
 
   public Guid Id { get; set; }
+  public Guid ThemeId { get; set; }
   public string Name { get; set; }
   public string Translation { get; set; }
 
   public DbTheme Theme { get; set; }
-  public ICollection<DbWordsDescriptions> WordsDescriptions { get; set; }
+  public ICollection<DbWordsDescription> WordsDescriptions { get; set; }
 
   public DbWord()
   {
     Theme = new DbTheme();
-    WordsDescriptions = new HashSet<DbWordsDescriptions>();
+    WordsDescriptions = new HashSet<DbWordsDescription>();
   }
 }
 

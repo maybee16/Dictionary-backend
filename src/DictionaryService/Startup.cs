@@ -27,6 +27,9 @@ namespace DictionaryService
         options.UseSqlServer(dbConnStr);
       });
 
+      services.AddHealthChecks()
+        .AddSqlServer(dbConnStr);
+
       services.AddControllers();
 
       services.AddMassTransit(mt =>
