@@ -1,7 +1,20 @@
+using DictionaryService.Business.Commands.Dictionary;
+using DictionaryService.Business.Commands.Dictionary.Interface;
+using DictionaryService.Data;
+using DictionaryService.Data.Interfaces;
+using DictionaryService.Data.Provider;
 using DictionaryService.Data.Provider.MsSql.Ef;
+using DictionaryService.Mappers.Db;
+using DictionaryService.Mappers.Db.Interfaces;
+using DictionaryService.Models.Dto.Requests.Dictionary;
+using DictionaryService.Models.Dto.Responses;
+using DictionaryService.Models.Dto.Responses.Interfaces;
+using DictionaryService.Validation.Dictionary;
+using FluentValidation;
 using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,6 +44,16 @@ namespace DictionaryService
         .AddSqlServer(dbConnStr);
 
       services.AddControllers();
+
+      // Dictionary
+      services.AddTransient<ICreateDictionaryCommand, CreateDictionaryCommand>();
+      services.AddTransient<IValidator<CreateDictionaryRequest>, CreateDictionaryRequestValidator>();
+      services.AddTransient<IDictionaryRepository, DictionaryRepository>();
+      services.AddTransient<IDbDictionaryMapper, DbDictionaryMapper>();
+      services.AddTransient<IDataProvider, DictionaryServiceDbContext>();
+
+      services.AddTransient<IResponseCreator, ResponseCreator>();
+      services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
 
       services.AddMassTransit(mt =>
       {

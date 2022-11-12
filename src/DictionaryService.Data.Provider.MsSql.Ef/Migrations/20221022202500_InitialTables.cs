@@ -29,9 +29,9 @@ public class InitialTables : Migration
       columns: table => new
       {
         Id = table.Column<Guid>(nullable: false),
-        DictionaryId = table.Column<Guid>(nullable: false),
         Name = table.Column<string>(nullable: false),
         Description = table.Column<string>(nullable: true),
+        DictionaryId = table.Column<Guid>(nullable: false),
         IsActive = table.Column<bool>(nullable: false)
       },
       constraints: table =>
@@ -44,27 +44,14 @@ public class InitialTables : Migration
       columns: table => new
       {
         Id = table.Column<Guid>(nullable: false),
-        ThemeId = table.Column<Guid>(nullable: false),
         Name = table.Column<string>(nullable: false),
-        Translation = table.Column<string>(nullable: false)
+        Translation = table.Column<string>(nullable: false),
+        ThemeId = table.Column<Guid>(nullable: false),
+        IsActive = table.Column<bool>(nullable: false)
       },
       constraints: table =>
       {
         table.PrimaryKey($"PK_{DbWord.TableName}", x => x.Id);
-      });
-
-    builder.CreateTable(
-      name: DbWordsDescription.TableName,
-      columns: table => new
-      {
-        Id = table.Column<Guid>(nullable: false),
-        WordId = table.Column<Guid>(nullable: false),
-        Name = table.Column<string>(nullable: false),
-        Content = table.Column<string>(nullable: false)
-      },
-      constraints: table =>
-      {
-        table.PrimaryKey($"PK_{DbWordsDescription.TableName}", x => x.Id);
       });
   }
 }

@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DictionaryService.Data.Provider\DictionaryService.Data.Provider.csproj" />
+    <ProjectReference Include="..\DictionaryService.Models.Db\DictionaryService.Models.Db.csproj" />
+  </ItemGroup>
+
 </Project>

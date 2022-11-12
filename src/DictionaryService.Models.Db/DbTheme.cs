@@ -8,9 +8,9 @@ public class DbTheme
   public const string TableName = "Theme";
 
   public Guid Id { get; set; }
-  public Guid DictionaryId { get; set; }
   public string Name { get; set; }
   public string Description { get; set; }
+  public Guid DictionaryId { get; set; }
   public bool IsActive { get; set; }
 
   public DbDictionary Dictionary { get; set; }

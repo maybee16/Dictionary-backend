@@ -8,9 +8,18 @@ public class DictionaryServiceDbContext : DbContext, IDataProvider
   public DbSet<DbDictionary> Dictionaries { get; set; }
   public DbSet<DbTheme> Themes { get; set; }
   public DbSet<DbWord> Words { get; set; }
-  public DbSet<DbWordsDescription> WordsDescriptions { get; set; }
 
   public DictionaryServiceDbContext(DbContextOptions<DictionaryServiceDbContext> options) : base(options)
   {
+  }
+
+  public void Save()
+  {
+    SaveChanges();
+  }
+
+  public async Task SaveAsync()
+  {
+    await SaveChangesAsync();
   }
 }
