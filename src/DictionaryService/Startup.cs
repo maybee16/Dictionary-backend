@@ -1,5 +1,7 @@
 using DictionaryService.Business.Commands.Dictionary;
 using DictionaryService.Business.Commands.Dictionary.Interface;
+using DictionaryService.Business.Commands.Theme;
+using DictionaryService.Business.Commands.Theme.Interface;
 using DictionaryService.Data;
 using DictionaryService.Data.Interfaces;
 using DictionaryService.Data.Provider;
@@ -7,9 +9,11 @@ using DictionaryService.Data.Provider.MsSql.Ef;
 using DictionaryService.Mappers.Db;
 using DictionaryService.Mappers.Db.Interfaces;
 using DictionaryService.Models.Dto.Requests.Dictionary;
+using DictionaryService.Models.Dto.Requests.Theme;
 using DictionaryService.Models.Dto.Responses;
 using DictionaryService.Models.Dto.Responses.Interfaces;
 using DictionaryService.Validation.Dictionary;
+using DictionaryService.Validation.Theme;
 using FluentValidation;
 using MassTransit;
 using Microsoft.AspNetCore.Builder;
@@ -50,8 +54,14 @@ namespace DictionaryService
       services.AddTransient<IValidator<CreateDictionaryRequest>, CreateDictionaryRequestValidator>();
       services.AddTransient<IDictionaryRepository, DictionaryRepository>();
       services.AddTransient<IDbDictionaryMapper, DbDictionaryMapper>();
-      services.AddTransient<IDataProvider, DictionaryServiceDbContext>();
 
+      // Theme
+      services.AddTransient<ICreateThemeCommand, CreateThemeCommand>();
+      services.AddTransient<IValidator<CreateThemeRequest>, CreateThemeRequestValidator>();
+      services.AddTransient<IThemeRepository, ThemeRepository>();
+      services.AddTransient<IDbThemeMapper, DbThemeMapper>();
+
+      services.AddTransient<IDataProvider, DictionaryServiceDbContext>();
       services.AddTransient<IResponseCreator, ResponseCreator>();
       services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
 

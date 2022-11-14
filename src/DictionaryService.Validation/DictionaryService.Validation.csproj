@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Theme\Interfaces\" />
     <Folder Include="Word\Interfaces\" />
   </ItemGroup>
 

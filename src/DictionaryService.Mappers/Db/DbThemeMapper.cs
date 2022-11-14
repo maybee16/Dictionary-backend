@@ -1,22 +1,23 @@
 ﻿using DictionaryService.Mappers.Db.Interfaces;
 using DictionaryService.Models.Db;
-using DictionaryService.Models.Dto.Requests.Dictionary;
+using DictionaryService.Models.Dto.Requests.Theme;
 
 namespace DictionaryService.Mappers.Db;
 
-public class DbDictionaryMapper : IDbDictionaryMapper
+public class DbThemeMapper : IDbThemeMapper
 {
-  public DbDictionary Map(CreateDictionaryRequest request)
+  public DbTheme Map(CreateThemeRequest request)
   {
-    Guid dictionaryId = Guid.NewGuid();
+    Guid themeId = Guid.NewGuid();
 
     return request is null
       ? null
-      : new DbDictionary
+      : new DbTheme
       {
-        Id = dictionaryId,
+        Id = themeId,
         Name = request.Name,
         Description = request.Description,
+        DictionaryId = request.DictionaryId,
         IsActive = true
       };
   }

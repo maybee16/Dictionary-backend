@@ -5,7 +5,7 @@ namespace DictionaryService.Models.Db;
 
 public class DbWord
 {
-  public const string TableName = "Word";
+  public const string TableName = "Words";
 
   public Guid Id { get; set; }
   public string Name { get; set; }
@@ -14,10 +14,6 @@ public class DbWord
   public bool IsActive { get; set; }
 
   public DbTheme Theme { get; set; }
-  public DbWord()
-  {
-    Theme = new DbTheme();
-  }
 }
 
 public class WordConfiguration : IEntityTypeConfiguration<DbWord>

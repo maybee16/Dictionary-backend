@@ -5,7 +5,7 @@ namespace DictionaryService.Models.Db;
 
 public class DbTheme
 {
-  public const string TableName = "Theme";
+  public const string TableName = "Themes";
 
   public Guid Id { get; set; }
   public string Name { get; set; }
@@ -18,7 +18,6 @@ public class DbTheme
 
   public DbTheme()
   {
-    Dictionary = new DbDictionary();
     Words = new HashSet<DbWord>();
   }
 }
