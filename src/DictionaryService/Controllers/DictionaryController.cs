@@ -18,4 +18,12 @@ public class DictionaryController : ControllerBase
   {
     return await command.ExecuteAsync(request);
   }
+
+  [HttpPost("get")]
+  public async Task<OperationResultResponse<DictionaryResponse>> CreateAsync(
+    [FromServices] IGetDictionaryCommand command,
+    GetDictionaryFilter filter)
+  {
+    return await command.ExecuteAsync(filter);
+  }
 }

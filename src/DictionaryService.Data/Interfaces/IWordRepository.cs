@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DictionaryService.Models.Db;
 
 namespace DictionaryService.Data.Interfaces;
 
 public interface IWordRepository
 {
+  Task<Guid?> CreateAsync(DbWord dbWord);
 }

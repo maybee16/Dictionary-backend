@@ -2,6 +2,8 @@ using DictionaryService.Business.Commands.Dictionary;
 using DictionaryService.Business.Commands.Dictionary.Interface;
 using DictionaryService.Business.Commands.Theme;
 using DictionaryService.Business.Commands.Theme.Interface;
+using DictionaryService.Business.Commands.Word;
+using DictionaryService.Business.Commands.Word.Interfaces;
 using DictionaryService.Data;
 using DictionaryService.Data.Interfaces;
 using DictionaryService.Data.Provider;
@@ -10,6 +12,7 @@ using DictionaryService.Mappers.Db;
 using DictionaryService.Mappers.Db.Interfaces;
 using DictionaryService.Models.Dto.Requests.Dictionary;
 using DictionaryService.Models.Dto.Requests.Theme;
+using DictionaryService.Models.Dto.Requests.Word;
 using DictionaryService.Models.Dto.Responses;
 using DictionaryService.Models.Dto.Responses.Interfaces;
 using DictionaryService.Validation.Dictionary;
@@ -60,6 +63,12 @@ namespace DictionaryService
       services.AddTransient<IValidator<CreateThemeRequest>, CreateThemeRequestValidator>();
       services.AddTransient<IThemeRepository, ThemeRepository>();
       services.AddTransient<IDbThemeMapper, DbThemeMapper>();
+
+      // Word
+      services.AddTransient<ICreateWordCommand, CreateWordCommand>();
+      services.AddTransient<IValidator<CreateWordRequest>, CreateWordRequestValidator>();
+      services.AddTransient<IWordRepository, WordRepository>();
+      services.AddTransient<IDbWordMapper, DbWordMapper>();
 
       services.AddTransient<IDataProvider, DictionaryServiceDbContext>();
       services.AddTransient<IResponseCreator, ResponseCreator>();

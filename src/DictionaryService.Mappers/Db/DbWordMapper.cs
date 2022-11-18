@@ -1,21 +1,21 @@
 ﻿using DictionaryService.Mappers.Db.Interfaces;
 using DictionaryService.Models.Db;
-using DictionaryService.Models.Dto.Requests.Theme;
+using DictionaryService.Models.Dto.Requests.Word;
 
 namespace DictionaryService.Mappers.Db;
 
-public class DbThemeMapper : IDbThemeMapper
+public class DbWordMapper : IDbWordMapper
 {
-  public DbTheme Map(CreateThemeRequest request)
+  public DbWord Map(CreateWordRequest request)
   {
     return request is null
       ? null
-      : new DbTheme
+      : new DbWord
       {
         Id = Guid.NewGuid(),
         Name = request.Name,
-        Description = request.Description,
-        DictionaryId = request.DictionaryId,
+        Translation = request.Translation,
+        ThemeId = request.ThemeId,
         IsActive = true
       };
   }

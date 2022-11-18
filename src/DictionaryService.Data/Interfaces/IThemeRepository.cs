@@ -5,4 +5,6 @@ namespace DictionaryService.Data.Interfaces;
 public interface IThemeRepository
 {
   Task<Guid?> CreateAsync(DbTheme dbTheme);
+
+  Task<bool> DoesExistAsync(Guid themeId);
 }

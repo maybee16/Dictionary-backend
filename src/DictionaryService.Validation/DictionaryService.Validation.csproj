@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DictionaryService.Data\DictionaryService.Data.csproj" />
     <ProjectReference Include="..\DictionaryService.Models.Dto\DictionaryService.Models.Dto.csproj" />
   </ItemGroup>
 
