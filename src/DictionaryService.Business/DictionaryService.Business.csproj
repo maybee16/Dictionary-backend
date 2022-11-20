@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\Word\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\DictionaryService.Data\DictionaryService.Data.csproj" />
     <ProjectReference Include="..\DictionaryService.Mappers\DictionaryService.Mappers.csproj" />
     <ProjectReference Include="..\DictionaryService.Models.Dto\DictionaryService.Models.Dto.csproj" />

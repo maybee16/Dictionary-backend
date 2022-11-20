@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DictionaryService.Data.Provider\DictionaryService.Data.Provider.csproj" />
     <ProjectReference Include="..\DictionaryService.Models.Db\DictionaryService.Models.Db.csproj" />
+    <ProjectReference Include="..\DictionaryService.Models.Dto\DictionaryService.Models.Dto.csproj" />
   </ItemGroup>
 
 </Project>

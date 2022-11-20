@@ -1,6 +1,7 @@
 ﻿using DictionaryService.Data.Interfaces;
 using DictionaryService.Data.Provider;
 using DictionaryService.Models.Db;
+using DictionaryService.Models.Dto.Requests.Theme.Filters;
 using Microsoft.EntityFrameworkCore;
 
 namespace DictionaryService.Data;
@@ -31,5 +32,15 @@ public class ThemeRepository : IThemeRepository
   public Task<bool> DoesExistAsync(Guid themeId)
   {
     return _provider.Themes.AnyAsync(x => x.Id == themeId);
+  }
+
+  public Task<DbTheme> GetAsync(GetThemeFilter filter)
+  {
+    return filter is null
+      ? null
+      : _provider.Themes
+        .Where(theme => theme.Id == filter.ThemeId)
+        .Include(theme => theme.Words.Where(word => word.IsActive))
+        .FirstOrDefaultAsync();
   }
 }

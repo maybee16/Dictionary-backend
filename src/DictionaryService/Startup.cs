@@ -1,7 +1,9 @@
 using DictionaryService.Business.Commands.Dictionary;
 using DictionaryService.Business.Commands.Dictionary.Interface;
+using DictionaryService.Business.Commands.Dictionary.Interfaces;
 using DictionaryService.Business.Commands.Theme;
 using DictionaryService.Business.Commands.Theme.Interface;
+using DictionaryService.Business.Commands.Theme.Interfaces;
 using DictionaryService.Business.Commands.Word;
 using DictionaryService.Business.Commands.Word.Interfaces;
 using DictionaryService.Data;
@@ -10,6 +12,10 @@ using DictionaryService.Data.Provider;
 using DictionaryService.Data.Provider.MsSql.Ef;
 using DictionaryService.Mappers.Db;
 using DictionaryService.Mappers.Db.Interfaces;
+using DictionaryService.Mappers.Models;
+using DictionaryService.Mappers.Models.Interfaces;
+using DictionaryService.Mappers.Responses;
+using DictionaryService.Mappers.Responses.Interfaces;
 using DictionaryService.Models.Dto.Requests.Dictionary;
 using DictionaryService.Models.Dto.Requests.Theme;
 using DictionaryService.Models.Dto.Requests.Word;
@@ -54,21 +60,29 @@ namespace DictionaryService
 
       // Dictionary
       services.AddTransient<ICreateDictionaryCommand, CreateDictionaryCommand>();
+      services.AddTransient<IGetDictionaryCommand, GetDictionaryCommand>();
       services.AddTransient<IValidator<CreateDictionaryRequest>, CreateDictionaryRequestValidator>();
       services.AddTransient<IDictionaryRepository, DictionaryRepository>();
       services.AddTransient<IDbDictionaryMapper, DbDictionaryMapper>();
+      services.AddTransient<IDictionaryResponseMapper, DictionaryResponseMapper>();
 
       // Theme
       services.AddTransient<ICreateThemeCommand, CreateThemeCommand>();
+      services.AddTransient<IGetThemeCommand, GetThemeCommand>();
       services.AddTransient<IValidator<CreateThemeRequest>, CreateThemeRequestValidator>();
       services.AddTransient<IThemeRepository, ThemeRepository>();
       services.AddTransient<IDbThemeMapper, DbThemeMapper>();
+      services.AddTransient<IThemeInfoMapper, ThemeInfoMapper>();
+      services.AddTransient<IThemeResponseMapper, ThemeResponseMapper>();
 
       // Word
       services.AddTransient<ICreateWordCommand, CreateWordCommand>();
+      services.AddTransient<IGetWordCommand, GetWordCommand>();
       services.AddTransient<IValidator<CreateWordRequest>, CreateWordRequestValidator>();
       services.AddTransient<IWordRepository, WordRepository>();
       services.AddTransient<IDbWordMapper, DbWordMapper>();
+      services.AddTransient<IWordInfoMapper, WordInfoMapper>();
+      services.AddTransient<IWordResponseMapper, WordResponseMapper>();
 
       services.AddTransient<IDataProvider, DictionaryServiceDbContext>();
       services.AddTransient<IResponseCreator, ResponseCreator>();
